@@ -1,5 +1,6 @@
 body{
     font-family: "Poppins";
+    background: #daffe3;
 }
 .tetris-wrap{
   display: flex;
@@ -13,11 +14,14 @@ body{
         }
         #tetris{
             margin-top: 30px;
+            // border-bottom:10px solid #e9e9e9;
         }
   }
     #tetris, #next-table {
-    border-collapse: collapse;
-    display: inline-block;
+        background: #fff;
+        border:5px solid #e9e9e9;
+        border-collapse: collapse;
+        display: inline-block;
     td {  
         border: 1px solid #e9e9e9;
         width: 30px;
@@ -47,7 +51,10 @@ body{
                 #stop,#start{
                     display: inline-block;
                     width: 40px;
-                    opacity: 0.5;
+                    opacity: 0.3;
+                    &.on{
+                        opacity: 0.6;
+                    }
                 }
             }
             .score-box{
@@ -66,18 +73,21 @@ body{
         ul{
             padding-right: 20px;
             li{
+                background: #fff;
                 margin-top: 20px;
                 display: flex;
-                justify-content: center;
+                justify-content: space-between;
                 align-items: center;
                 padding: 20px;
-                border:1px solid #e9e9e9;
+                border:6px solid #e9e9e9;
                 i{
                     display: inline-block;
                     width: 40px;
                 }
                 div{
                     margin-left: 20px;    
+                    width: 120px;
+                    overflow: hidden;
                 }
                 span{
                     display: block;
@@ -86,6 +96,7 @@ body{
                         font-weight: 100;
                     }
                     &.nick{
+                        white-space: nowrap;
                         font-size: 20px;
                         padding: 5px 0 7px;
                     }

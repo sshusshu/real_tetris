@@ -368,14 +368,28 @@ let tickControl = setInterval(()=>{
 let isPaused = false;
 
 
+const addClassOn = target => {  
+    target.classList.add('on')
+}
 
-document.getElementById('stop').addEventListener('click',function(){  
+const removeClassOn = target =>{
+    target.classList.remove('on')
+}
+
+const startBtn = document.getElementById('start');
+const stopBtn = document.getElementById('stop')
+
+stopBtn.addEventListener('click',function(){  
+  removeClassOn(startBtn)
+  addClassOn(this)
   isPaused=true;
   clearInterval(tick)
   clearInterval(tickControl)
 })
 
-document.getElementById('start').addEventListener('click',function(){
+startBtn.addEventListener('click',function(){
+    removeClassOn(stopBtn)
+    addClassOn(this)
     if(isPaused){
         tick = setInterval(goDown,tickTime)
         tickControl = setInterval(()=>{

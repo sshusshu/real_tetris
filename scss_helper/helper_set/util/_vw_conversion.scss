@@ -1,0 +1,257 @@
+@charset "utf-8";
+/// VW CONVERSION
+/// @access public
+
+// px
+@mixin px-convert($property, $pc-pixel) {
+
+    @if type-of($pc-pixel) == number {
+        #{$property}: $pc-pixel*1px;
+    }
+    @else if type-of($pc-pixel) == string {
+        #{$property}: auto;
+    }
+    @else if type-of($pc-pixel) == list {
+        $px: ();
+        $vw: ();
+        @each $value in $pc-pixel {
+            @if type-of($value) == number {
+                $px: append($px, $value*1px);
+            }
+            @else if type-of($value) == string {
+                $px: append($px, auto);
+            }
+        }
+        #{$property}: $px;
+    }
+}
+// vw conversion PC
+@mixin vw-convert-pc($property, $pc-pixel) {
+    $psd-pixel: delUnit($psd-pc-width);
+    @if type-of($pc-pixel) == number {
+        #{$property}: $pc-pixel*1px;
+        #{$property}: $pc-pixel*100/$psd-pixel*1vw;
+     /*   @media (min-width:$psd-pc-width) {
+            #{$property}: $pc-pixel*1px;
+        }*/
+    }
+    @else if type-of($pc-pixel) == string {
+        #{$property}: auto;
+   /*     @media (min-width:$psd-pc-width) {
+            #{$property}: auto;
+        }*/
+    }
+    @else if type-of($pc-pixel) == list {
+        $px: ();
+        $vw: ();
+        @each $value in $pc-pixel {
+            @if type-of($value) == number {
+                $px: append($px, $value*1px);
+                $vw: append($vw, $value*100/$psd-pixel*1vw);
+            }
+            @else if type-of($value) == string {
+                $px: append($px, auto);
+                $vw: append($vw, auto);
+            }
+        }
+        #{$property}: $px;
+        #{$property}: $vw;
+
+        $px: ();
+        @each $value in $pc-pixel {
+            @if type-of($value) == number {
+                $px: append($px, $value*1px);
+            }
+            @else if type-of($value) == string {
+                $px: append($px, auto);
+            }
+        }
+      /*  @media (min-width:$psd-pc-width) {
+            #{$property}: $px;
+        }*/
+    }
+}
+@function str-replace($string, $search, $replace: '') {
+    $index: str-index($string, $search);
+
+    @if $index {
+        @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+
+    @return $string;
+}
+
+// percentage conversion PC
+@mixin per-convert-pc($property, $pc-pixel, $psd-pixel:null) {
+    @if $psd-pixel == null {
+        $psd-pixel: delUnit($psd-pc-width);
+    }@else{
+        @if(type_of($psd-pixel) == string){
+            @if $psd-pixel == col-2 {
+                $psd-pixel: 336;
+            }@else if $psd-pixel == col-3 {
+                $psd-pixel: 528;
+            }@else if $psd-pixel == col-4 {
+                $psd-pixel: 720;
+            }@else if $psd-pixel == col-5 {
+                $psd-pixel: 912;
+            }@else if $psd-pixel == col-6 {
+                $psd-pixel: 1104;
+            }@else if $psd-pixel == col-7 {
+                $psd-pixel: 1296;
+            }@else if $psd-pixel == col-8 {
+                $psd-pixel: 1488;
+            }@else if $psd-pixel == col-9 {
+                $psd-pixel: 1680;
+            }@else{
+                @debug '잘못된 인수입니다.';
+            }
+        }@else if(type_of($psd-pixel) == number){
+            $psd-pixel: if(unitless($psd-pixel), $psd-pixel, delUnit($psd-pixel));
+        }
+    }
+
+    @if type-of($pc-pixel) == number {
+        #{$property}: $pc-pixel*1px;
+        #{$property}: $pc-pixel*100/$psd-pixel*1%;
+    }@else if type-of($pc-pixel) == string {
+        #{$property}: auto;
+
+    }@else if type-of($pc-pixel) == list {
+        $px: ();
+        $vw: ();
+        @each $value in $pc-pixel {
+            @if type-of($value) == number {
+                $px: append($px, $value*1px);
+                $vw: append($vw, $value*100/$psd-pixel*1%);
+            }
+            @else if type-of($value) == string {
+                $px: append($px, auto);
+                $vw: append($vw, auto);
+            }
+        }
+        #{$property}: $px;
+        #{$property}: $vw;
+
+        $px: ();
+        @each $value in $pc-pixel {
+            @if type-of($value) == number {
+                $px: append($px, $value*1px);
+            }
+            @else if type-of($value) == string {
+                $px: append($px, auto);
+            }
+        }
+    }
+}
+
+// vw conversion Tablet - max 1280
+@mixin vw-convert-tb($property, $tb-pixel){
+    $psd-pixel: delUnit($psd-tablet-width);
+    @if type-of($tb-pixel) == number {
+        #{$property}: $tb-pixel*1px;
+        #{$property}: $tb-pixel*100/$psd-pixel*1vw;
+    }
+    @else if type-of($tb-pixel) == string {
+        #{$property}: auto;
+    }
+    @else if type-of($tb-pixel) == list {
+        $px: ();
+        $vw: ();
+        @each $value in $tb-pixel {
+            @if type-of($value) == number {
+                $px: append($px, $value*1px);
+                $vw: append($vw, $value*100/$psd-pixel*1vw);
+            }
+            @else if type-of($value) == string {
+                $px: append($px, auto);
+                $vw: append($vw, auto);
+            }
+        }
+
+        #{$property}:$px;
+        #{$property}:$vw;
+    }
+}
+
+
+// vw conversion Mobile
+@mixin vw-convert-mo($property, $mo-pixel){
+    $psd-pixel: delUnit($psd-mobile-width);
+    @if type-of($mo-pixel) == number {
+        #{$property}: $mo-pixel*100/$psd-pixel*1vw;
+    }
+    @else if type-of($mo-pixel) == string {
+        #{$property}: auto;
+    }
+    @else if type-of($mo-pixel) == list {
+        $vw: ();
+        @each $value in $mo-pixel {
+            @if type-of($value) == number {
+                $vw: append($vw, $value*100/$psd-pixel*1vw);
+            }
+            @else if type-of($value) == string {
+                $vw: append($vw, auto);
+            }
+        }
+        #{$property}:$vw;
+    }
+}
+
+// vw conversion normal
+@mixin vw-convert($property, $pc-pixel, $psd-pc-width) {
+    $psd-pixel: delUnit($psd-pc-width);
+
+    @if type-of($pc-pixel) == number {
+        #{$property}: $pc-pixel*1px;
+        #{$property}: $pc-pixel*100/$psd-pixel*1vw;
+    }
+    @else if type-of($pc-pixel) == string {
+        #{$property}: auto;
+    }
+    @else if type-of($pc-pixel) == list {
+        $px: ();
+        $vw: ();
+        @each $value in $pc-pixel {
+            @if type-of($value) == number {
+
+                $vw: append($vw, $value*100/$psd-pixel*1vw);
+            }
+            @else if type-of($value) == string {
+                $px: append($px, auto);
+                $vw: append($vw, auto);
+            }
+        }
+        #{$property}: $px;
+        #{$property}: $vw;
+    }
+}
+
+@mixin convert-device($property, $pc-pixel) {
+
+    @include break-point($mobile) {
+        @include vw-convert-mo($property, $pc-pixel);
+    }
+    @include break-point($tablet) {
+        @include vw-convert-pc($property, $pc-pixel);
+    }
+    @include break-point($pc-normal) {
+        @include vw-convert-pc($property, $pc-pixel);
+    }
+    @include break-point($pc-4k) {
+        @include px-convert($property, $pc-pixel);
+    }
+}
+
+@mixin common-convert-device($property, $pc-pixel) {
+
+    @include break-point($mobile) {
+        @include vw-convert-mo($property, $pc-pixel);
+    }
+    @include break-point($tablet) {
+        @include vw-convert-tb($property, $pc-pixel);
+    }
+    @include break-point($pc) {
+        @include px-convert($property, $pc-pixel);
+    }
+}

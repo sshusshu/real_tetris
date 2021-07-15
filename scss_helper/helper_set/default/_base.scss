@@ -1,0 +1,422 @@
+@charset "utf-8";
+
+/* ! HTML5 Boilerplate v5.3.0 | MIT License | https://html5boilerplate.com/
+ * Some were added by Designfever.com
+ * update : 2017/03/07
+*/
+// ==========================================================================
+// Base styles: opinionated defaults
+// --------------------------------------------------------------------------
+
+
+// base style
+// --------------------------------------------------------------------------
+
+// box-size
+*, *:before, *:after {
+    box-sizing: border-box; 
+}
+
+* {
+    word-break: keep-all;  
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+    // touch
+    -webkit-overflow-scrolling: touch;
+}
+
+*:before, *:after {
+    display: none;
+    content: '';
+}
+
+body, dl, ul, ol, li, dt, dd, blockquote, p, h1, h2, h3, h4, h5, h6 {
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: normal;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+
+caption, legend {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+    font-size: 0;
+    text-indent: -9999px;
+}
+
+pre, xmp, plaintext, listing, samp, kbd, code, figure, figcaption {
+    margin: 0
+}
+
+iframe {
+    border: none;
+}
+
+img {
+    vertical-align: top
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+// Remove the gap between audio, canvas, iframes,
+// images, videos and the bottom of their containers:
+// https://github.com/h5bp/html5-boilerplate/issues/440
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+i, cite, em, var, address, dfn {
+    font-style: normal;
+}
+
+a {
+    &:link, &:visited, &:active {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    &:hover {
+        color: inherit;
+    }
+}
+
+// base style: Form elements
+// --------------------------------------------------------------------------
+
+button {
+    padding: 0;
+    overflow: hidden;
+    background: none;
+    cursor:pointer;
+    border: 0;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+input, button, textarea, select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+}
+
+// input type:button style
+$_buttons-list: (
+        "button",
+        "[type='button']",
+        "[type='reset']",
+        "[type='submit']",
+);
+
+#{$_buttons-list}{
+    vertical-align: top;
+    outline: none;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+input[type="checkbox"] {
+    -webkit-appearance:checkbox;
+    -moz-appearance:checkbox;
+}
+
+input[type="radio"] {
+    -webkit-appearance:radio;
+    -moz-appearance:radio;
+}
+
+// input style
+$_text-inputs-list: (
+        "[type='color']",
+        "[type='date']",
+        "[type='datetime']",
+        "[type='datetime-local']",
+        "[type='email']",
+        "[type='month']",
+        "[type='number']",
+        "[type='password']",
+        "[type='search']",
+        "[type='tel']",
+        "[type='text']",
+        "[type='time']",
+        "[type='url']",
+        "[type='week']",
+        "input:not([type])",
+        "textarea",
+);
+
+#{$_text-inputs-list}{
+    border: 1px solid #888;
+    outline: none;
+    vertical-align: baseline;
+    &::placeholder {
+        color: #555;
+    }
+}
+#{$_text-inputs-list} {
+    &:invalid{
+        border: 1px solid red;
+    }
+}
+
+select {
+    border: 1px solid #888;
+    background: transparent;
+    -webkit-appearance:none; /* for chrome */
+    -moz-appearance:none; /*for firefox*/
+    appearance:none;
+
+    &::-ms-expand{
+        display:none;/*for IE10,11*/
+    }
+}
+
+textarea {
+    border: 1px solid white;
+    resize: none;
+}
+
+#{$_text-inputs-list}, select {
+    &:focus{
+        border: 1px solid blue;
+    }
+    &:disabled{
+        background-color: #444;
+        color: #888;
+    }
+}
+
+// reset style
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+}
+
+input::-ms-clear,
+input::-ms-reveal {display: none; width : 0; height: 0;}
+
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration { display: none; }
+
+
+.clearfix::after { content: ''; display: table; clear: both }
+
+// base style: Touch Device
+// --------------------------------------------------------------------------
+
+// touch-action
+//
+// 값	                설명
+// ....................................................................................
+// auto	            브라우저가 요소의 동작을 결정합니다. 이는 -ms-touch-action의 기본값입니다.
+// none	            허용되는 기본 동작이 없습니다.
+// manipulation	    이동, 손가락을 모아서 축소/확대 및 살짝 밀어서 앞/뒤로 이동만 허용됩니다.
+// double-tap-zoom  두 번 탭하여 확대/축소만 허용됩니다.
+// inherit	        요소가 해당 상위 요소에서 -ms-touch-action 값을 상속합니다.
+//
+// api : https://blogs.msdn.microsoft.com/ie_ko/2012/04/28/1153/
+[role=button], a, area, button, input, label, select, summary, textarea {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+
+//터치 디바이스 기기에서 탭 하이라이트 효과 제거
+// a, button, input, label, select, textarea{-webkit-tap-highlight-color: transparent;}
+
+
+
+
+// base style: Skip Navi & Browser Upgrade Prompt
+// --------------------------------------------------------------------------
+
+// skip Navigation
+#skip-navi{
+    position: absolute; top: 0; left: 0;
+    width: 100%;
+    z-index: 600;
+
+    a {
+        display: block;
+        position: absolute;
+        top: -9999px;
+
+        &:hover, &:active, &:focus{
+            display: inline-block;
+            top: 0;
+            width: 100%;
+        }
+
+        span {
+            display: block;
+            padding: 10px 0;
+            background: #fafafa;
+            border: 2px solid #666;
+            color: #000;
+            font-size: 16px;
+            text-align: center;
+        }
+    }
+}
+
+// browser Upgrage
+.browser-upgrade {
+    position: fixed; left: 0; top: 0;
+    width: 100%;
+    z-index: 10000;
+    background: #efefef;
+    border-bottom: 2px solid #bababa;
+    margin: 0;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 14px;
+    color: #595959;
+
+    a {
+        font-size: 18px;
+        color: #0027AA;
+
+        &:hover {
+            color: #000;
+        }
+    }
+}
+
+
+// 통신용 엘리먼트 숨기기
+iframe[name ^='google_']{
+    position: absolute; left:-9999px; top:-9999px; width:0; height:0; visibility: hidden;
+}
+
+
+// base style: browser scroll
+// --------------------------------------------------------------------------
+
+// IE scrollbar
+// body{
+//    scrollbar-face-color:#ddd;
+//    scrollbar-3dlight-color:#fff;
+//    scrollbar-highlight-color:#fff;
+//    scrollbar-shadow-color:#fff;
+//    scrollbar-darkshadow-color:#fff;
+//    scrollbar-arrow-color:#ddd;
+//    scrollbar-track-color:#fff;
+// }
+
+// webkit scrollbar
+
+
+
+// base style: Print
+// Inlined to avoid the additional HTTP request:
+// http://www.phpied.com/delay-loading-your-print-css/
+// --------------------------------------------------------------------------
+
+@media print {
+    *,
+    *:before,
+    *:after,
+    *:first-letter,
+    *:first-line {
+        background: transparent !important;
+        color: #000 !important; //Black prints faster: http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    // Don't show links that are fragment identifiers,
+    // or use the `javascript:` pseudo protocol
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #555;
+        page-break-inside: avoid;
+    }
+
+    // Printing Tables:
+    // http://css-discuss.incutio.com/wiki/Printing_Tables
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+
+.wa {
+    text-indent: -9999px;
+    position: absolute;
+    top: -9999px;
+    font-size: 0;
+}

@@ -1,0 +1,14 @@
+@charset "utf-8";
+/// ** Font family **
+/// @param {Value}
+/// @디자인 스타일 가이드에 따른 폰트 타입 정의
+/// @group fonts
+
+@mixin font-family($type: null){
+    @if(length($type) < 2 ){
+        font-family: $type;
+    }@else{
+        //@debug 'leng' type_of($type) length($type) ;
+        font-family: nth($type,1), nth($type,2);
+    }
+}

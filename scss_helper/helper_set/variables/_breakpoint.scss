@@ -1,0 +1,48 @@
+@charset "utf-8";
+// 미디어쿼리 분기 지점 정의
+$custom-media-break-points : (
+    mobile-portrait:        320px,
+    mobile-landscape:       480px, //가로모드
+
+    tablet-portrait:        768px,
+    tablet-landscape:       1024px,
+
+    //pc-x-smaller-std:     1025px,
+    pc-smaller-std:         1281px,
+    pc-standard:            1600px, // 기준구간
+    pc-larger-std:          1921px, //최적화 구간
+    pc-x-larger-std:        2561px //대형 화면 대응 구간
+) !global !default;
+
+// 모바일 구간
+$screen-mobile-portrait:    map_get($custom-media-break-points, mobile-portrait);
+$screen-mobile-landscape:   map_get($custom-media-break-points, mobile-landscape);
+
+// 태블릿 구간
+$screen-tablet-portrait:    map_get($custom-media-break-points, tablet-portrait);
+$screen-tablet-landscape:   map_get($custom-media-break-points, tablet-landscape);
+
+// Desktop PC 구간
+$screen-pc-small:           map_get($custom-media-break-points, pc-smaller-std);
+$screen-pc-standard:        map_get($custom-media-break-points, pc-standard);
+$screen-pc-large:           map_get($custom-media-break-points, pc-larger-std);
+$screen-pc-x-large:         map_get($custom-media-break-points, pc-x-larger-std);
+
+// 구간별 최대 값 정의
+$screen-mobile-max:         ($screen-tablet-portrait - 0.3) !default;
+$screen-tablet-max:         ($screen-pc-small - 1) !default;
+$screen-pc-max:             ($screen-pc-x-large - 1) !default;
+
+
+// Breakpoint 기기 변수
+$mobile: ($screen-mobile-max, max);//~767px
+
+$tablet: ($screen-tablet-portrait, $screen-tablet-max); //768px~1280px
+
+$pc-normal:     ($screen-pc-small, $screen-pc-max); //1281px~2560px
+$pc-large:     ($screen-pc-large, min); //1921px~
+$pc-4k : ($screen-pc-x-large, min); // 2561px ~
+
+$tablet-pc :  ($screen-tablet-portrait, min); //768px~
+$pc:     ($screen-pc-small, min); //1281px~
+

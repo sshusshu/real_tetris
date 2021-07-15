@@ -1,0 +1,5 @@
+@charset "utf-8";
+// 단위 제거 함수
+@function delUnit($value) {
+    @return ($value / ($value * 0 + 1))
+}

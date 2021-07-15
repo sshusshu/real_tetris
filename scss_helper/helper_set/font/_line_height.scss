@@ -1,0 +1,22 @@
+@charset "utf-8";
+/// Font style : line-height
+/// @param {Value}	font-size
+/// @param {Value}	$line-height의 px값
+/// @group fonts
+
+@mixin line-height($arg...){
+    @if(length($arg) > 1){
+        $font-size: nth($arg, 1);
+        $line-height: nth($arg, 2);
+        $type-line-height: type_of($line-height);
+
+        @if($type-line-height == number){
+            $line-height : if(unitless($line-height), $line-height, delUnit($line-height));
+            line-height: $line-height / $font-size;
+        } @else if($type-line-height == string){
+            line-height: $line-height;
+        }
+    }@else{
+        line-height: $arg;
+    }
+}

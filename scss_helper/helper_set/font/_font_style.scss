@@ -1,0 +1,99 @@
+@charset "utf-8";
+/// Font style : PX단위
+/// px단위를 사용할 경우 사용
+/// @param {Value}	font-face 믹스인 호출을 위한 플래그 값 정의
+/// @param {Value}	$font-size, 단위는 px, 생략 가능
+/// @param {Value}	$line-height(폰트 사이즈의 상대적 비율), 생략 가능
+/// @group fonts
+
+@mixin px-font($type:null,$font-size: null, $line-height:null){
+    //font-type
+    @if($type != null and $type !=''){
+        @include font-family($type);
+    }
+    //font-size
+    @if($font-size != null and $font-size != ''){
+        $font-size: if(unitless($font-size), $font-size, delUnit($font-size));
+        font-size: $font-size + px;
+    }
+
+    //line-height
+    @if($line-height != null and $line-height != ''){
+        @include line-height($font-size, $line-height);
+    }
+}
+
+
+/// Font style : VW 단위 변환
+/// 각 디바이스별로 mixin정의
+/// @param {Value}	font-face 믹스인 호출을 위한 플래그 값 정의
+/// @param {Value}	$font-size, 단위는 px, 생략 가능
+/// @param {Value}	$line-height(폰트 사이즈의 상대적 비율), 생략 가능
+/// @group fonts
+
+@mixin vw-font-pc($type:null,$font-size: null, $line-height:null){
+    //font-type
+    @if($type != null and $type !=''){
+        @include font-family($type);
+    }
+    //font-size
+    @if($font-size != null and $font-size != ''){
+        $font-size: if(unitless($font-size), $font-size, delUnit($font-size));
+        @include vw-convert-pc(font-size, $font-size);
+    }
+
+    //line-height
+    @if($line-height != null and $line-height != ''){
+        @include line-height($font-size, $line-height);
+    }
+}
+
+@mixin vw-font-tb($type:null,$font-size: null, $line-height:null){
+    //font-type
+    @if($type != null and $type !=''){
+        @include font-family($type);
+    }
+    //font-size
+    @if($font-size != null and $font-size != ''){
+        $font-size: if(unitless($font-size), $font-size, delUnit($font-size));
+        @include vw-convert-tb(font-size, $font-size);
+    }
+
+    //line-height
+    @if($line-height != null and $line-height != ''){
+        @include line-height($font-size, $line-height);
+    }
+}
+
+@mixin vw-font-mo($type:null,$font-size: null, $line-height:null){
+    //font-type
+    @if($type != null and $type !=''){
+        @include font-family($type);
+    }
+    //font-size
+    @if($font-size != null and $font-size != ''){
+        $font-size: if(unitless($font-size), $font-size, delUnit($font-size));
+        @include vw-convert-mo(font-size, $font-size);
+    }
+
+    //line-height
+    @if($line-height != null and $line-height != ''){
+        @include line-height($font-size, $line-height);
+    }
+}
+
+@mixin font-device($type:null,$font-size: null, $line-height:null) {
+    @include break-point($mobile) {
+        @include vw-font-mo( $type, $font-size, $line-height);
+    }
+    @include break-point($tablet) {
+        @include vw-font-tb($type, $font-size, $line-height);
+    }
+    @include break-point($pc) {
+        @include px-font($type, $font-size, $line-height);
+    }
+    @include break-point($pc-4k) {
+        @include px-font($type, $font-size, $line-height);
+    }
+
+}

@@ -1,0 +1,4 @@
+@function vw-cal($px, $psd-size){
+    $vwVal: (($px / delUnit($psd-size)) * 100) + vw;
+    @return $vwVal;
+}

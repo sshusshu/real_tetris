@@ -14,7 +14,6 @@ body{
         }
         #tetris{
             margin-top: 30px;
-            // border-bottom:10px solid #e9e9e9;
         }
   }
     #tetris, #next-table {
@@ -26,11 +25,11 @@ body{
         border: 1px solid #e9e9e9;
         width: 30px;
         height: 30px;
-        &.red{background-color: red;}
+        &.red{background-color: #ff4e41;}
         &.orange{background-color: #f75a21;}
-        &.yellow{background-color: #ffc116;}
-        &.green{background-color: #00af6c;}
-        &.blue{background-color: #0055ff;}
+        &.yellow{background-color: #ffcb39;}
+        &.green{background-color: #4ba8ea;}
+        &.blue{background-color: #3561ef;}
         &.navy{background-color: #562292;}
         &.violet{background-color: #b3248f;}
         &.red, &.orange, &.yellow, &.green, &.blue, &.navy, &.violet{

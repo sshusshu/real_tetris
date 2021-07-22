@@ -36,7 +36,7 @@ body {
 }
 
 .tetris-wrap #tetris td.red, .tetris-wrap #next-table td.red {
-  background-color: red;
+  background-color: #ff4e41;
 }
 
 .tetris-wrap #tetris td.orange, .tetris-wrap #next-table td.orange {
@@ -44,15 +44,15 @@ body {
 }
 
 .tetris-wrap #tetris td.yellow, .tetris-wrap #next-table td.yellow {
-  background-color: #ffc116;
+  background-color: #ffcb39;
 }
 
 .tetris-wrap #tetris td.green, .tetris-wrap #next-table td.green {
-  background-color: #00af6c;
+  background-color: #4ba8ea;
 }
 
 .tetris-wrap #tetris td.blue, .tetris-wrap #next-table td.blue {
-  background-color: #0055ff;
+  background-color: #3561ef;
 }
 
 .tetris-wrap #tetris td.navy, .tetris-wrap #next-table td.navy {

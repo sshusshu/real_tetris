@@ -1,11 +1,51 @@
 let tetris = document.querySelector('#tetris');
 let tetrisData = [];
+const dataModal = document.querySelector('.data-modal');
+const InputId = dataModal.querySelector('form');
 const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'navy', 'violet'];
 const colLen = 20;
 const rowLen = 15;
 let nowBlock;
 let nextBlock;
 let nowXY = [0, Math.floor(rowLen/2-1)];
+
+
+let nickNameData; 
+let scoreData; 
+
+// const lankInfoSave = async(e) => {
+//   const lankData = {
+//     id:nickNameData,
+//     score:scoreData,
+//     timestamp:new Date().getDate()
+//   }
+
+//   await fetch('http://localhost:3000/rank',{
+//     method:'POST',
+//     body: JSON.stringify(lankData)
+//   })
+// console.log(lankData)
+// }
+
+const getId = async(e)=>{
+  e.preventDefault();
+  nickNameData = e.target.children[0].value;
+  
+  const lankData = {
+    id:nickNameData,
+    score:scoreData,
+    timestamp:new Date().getDate()
+  }
+
+  await fetch('http://localhost:3000/rank',{
+    method:'POST',
+    body: JSON.stringify(lankData)
+  })
+  console.log(lankData)
+}
+
+InputId.addEventListener('submit',(e)=>getId(e))
+
 
 let blocks = [
   {
@@ -272,12 +312,12 @@ function generate(){
     clearInterval(tickControl);
     clearInterval(tick);
     alert('game over!');
-    let nickName = prompt('닉네임을 입력하세요!');
-    console.log(nickName)
-    let score = parseInt(document.getElementById('score').textContent, 10);
-    console.log(score)
+    dataModal.style.display="flex";
+    // nickNameData = prompt('닉네임을 입력하세요!');
+    scoreData = parseInt(document.getElementById('score').textContent, 10);
   }
 }
+
 
 function checkRow(){
 

@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/sshusshu/real_tetris/issues"
   },
-  "homepage": "https://github.com/sshusshu/real_tetris#readme"
+  "homepage": "https://github.com/sshusshu/real_tetris#readme",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
 }

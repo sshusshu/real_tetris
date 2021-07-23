@@ -30,16 +30,17 @@ let scoreData;
 const getId = async(e)=>{
   e.preventDefault();
   nickNameData = e.target.children[0].value;
-  
+  const time = new Date();
   const lankData = {
     id:nickNameData,
     score:scoreData,
-    timestamp:new Date().getDate()
+    timestamp:`${time.getFullYear()}.${time.getMonth()}.${time.getDate()}`
   }
 
   await fetch('http://localhost:3000/rank',{
     method:'POST',
-    body: JSON.stringify(lankData)
+    body: JSON.stringify(lankData),
+    headers:{'Content-Type':'application/json'}
   })
   console.log(lankData)
 }
@@ -404,7 +405,7 @@ let tickControl = setInterval(()=>{
   tickTime -= 50;
   clearInterval(tick)
   tick = setInterval(goDown,tickTime)
-},5000)
+},10000)
 let isPaused = false;
 
 

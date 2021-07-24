@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "tetris made with javascript",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sshusshu/real_tetris.git"
@@ -20,6 +18,7 @@
   },
   "homepage": "https://github.com/sshusshu/real_tetris#readme",
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "json-server": "^0.16.3"
   }
 }

@@ -1,7 +1,7 @@
 const lankBox = document.querySelector('.lanking ul');
 
 const renderRank = async()=>{
-    let uri = 'http://localhost:3000/rank';
+    let uri = 'http://localhost:3200/rank';
 
     const response = await fetch(uri);
     const ranks = await response.json();

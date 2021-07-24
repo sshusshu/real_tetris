@@ -37,7 +37,7 @@ const getId = async(e)=>{
     timestamp:`${time.getFullYear()}.${time.getMonth()}.${time.getDate()}`
   }
 
-  await fetch('http://localhost:3000/rank',{
+  await fetch('http://localhost:3200/rank',{
     method:'POST',
     body: JSON.stringify(lankData),
     headers:{'Content-Type':'application/json'}

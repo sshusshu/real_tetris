@@ -9,23 +9,8 @@ let nowBlock;
 let nextBlock;
 let nowXY = [0, Math.floor(rowLen/2-1)];
 
-
 let nickNameData; 
 let scoreData; 
-
-// const lankInfoSave = async(e) => {
-//   const lankData = {
-//     id:nickNameData,
-//     score:scoreData,
-//     timestamp:new Date().getDate()
-//   }
-
-//   await fetch('http://localhost:3000/rank',{
-//     method:'POST',
-//     body: JSON.stringify(lankData)
-//   })
-// console.log(lankData)
-// }
 
 const getId = async(e)=>{
   e.preventDefault();
@@ -319,7 +304,6 @@ function generate(){
   }
 }
 
-
 function checkRow(){
 
   const fullRows= [];
@@ -342,7 +326,6 @@ function checkRow(){
   score += fullRows.length * 10;
   document.getElementById('score').textContent = String(score);
 }
-
 
 const isActive = value =>{
   if(value>0) return true;
@@ -390,17 +373,17 @@ function goDown(){
     draw();
     return true;
   }
-
 }
-
-
 
 
 init();
 generate();
+
+
+// 이벤트 
+
 let tickTime = 1000;
 let tick = setInterval(goDown,tickTime)
-//점점 속도 빠르게 
 let tickControl = setInterval(()=>{
   tickTime -= 50;
   clearInterval(tick)

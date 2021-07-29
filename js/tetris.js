@@ -22,7 +22,7 @@ const getId = async(e)=>{
     timestamp:`${time.getFullYear()}.${time.getMonth()}.${time.getDate()}`
   }
 
-  await fetch('http://localhost:3200/rank',{
+  await fetch('https://tetris-server-app-2.herokuapp.com/rank',{
     method:'POST',
     body: JSON.stringify(lankData),
     headers:{'Content-Type':'application/json'}

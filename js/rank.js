@@ -1,7 +1,7 @@
 const lankBox = document.querySelector('.lanking ul');
 
 const renderRank = async()=>{
-    let uri = 'http://localhost:3200/rank';
+    let uri = 'https://tetris-server-app-2.herokuapp.com/rank';
 
     const response = await fetch(uri);
     const ranks = await response.json();

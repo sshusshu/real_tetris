@@ -22,14 +22,18 @@ const getId = async(e)=>{
     timestamp:`${time.getFullYear()}.${time.getMonth()+1}.${time.getDate()}`
   }
 
-  await fetch('http://localhost:3000/rank',{
+  await fetch('https://sshus-tetris.herokuapp.com/rank',{
     method:'POST',
     body: JSON.stringify(lankData),
     headers:{'Content-Type':'application/json'}
   })
 }
 
-InputId.addEventListener('submit',(e)=>getId(e))
+InputId.addEventListener('submit',async(e)=>{
+  await getId(e)
+  dataModal.style.display="none";
+  window.location.reload()
+})
 
 
 let blocks = [
@@ -298,7 +302,6 @@ function generate(){
     clearInterval(tick);
     alert('game over!');
     dataModal.style.display="flex";
-    // nickNameData = prompt('닉네임을 입력하세요!');
     scoreData = parseInt(document.getElementById('score').textContent, 10);
   }
 }

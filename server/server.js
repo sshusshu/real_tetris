@@ -29,5 +29,5 @@ app.post('/rank',(req,res)=>{
 })
 
 app.listen(port, () => {
-  console.log('server listening on 3ddd000...')
+  console.log('server listening on 3000...')
 })

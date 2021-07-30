@@ -3,7 +3,7 @@ const lankBox = document.querySelector('.lanking ul');
 const renderRank = async()=> {
     const getRank = async () => {
         try {
-            const res = await fetch('http://localhost:3000/rank');
+            const res = await fetch('https://sshus-tetris.herokuapp.com/rank');
             return res.json();
         } catch (error) {
             console.log(error)

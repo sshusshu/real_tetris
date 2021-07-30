@@ -2,51 +2,12 @@ import express from 'express';
 import cors from 'cors';
 import {getRank,setRank} from './route/rank.js';
 
-
-
 const app = express();
 const port = process.env.PORT || 3000;
 
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 app.use(cors());
-
-
-
-// const rankRoute = [
-//     {
-//         // GET RANK
-//         method: 'get',
-//         route: '/rank',
-//         handler: (req, res) => {
-//             const ranks = getRank()
-//             res.send(ranks)
-//         },
-//     },
-//     {
-//         // CREATE RANKS
-//         method: 'post',
-//         route: '/rank',
-//         handler: ({ body }, res) => {
-//             const ranks = getRank()
-//             const newRank =   {
-//                 id: "wonny",
-//                 score: 200,
-//                 timestamp: "2021.6.24"
-//             }
-//             ranks.unshift(newRank)
-//             setRank(ranks)
-//             res.send(newRank)
-//         },
-//     },
-// ]
-
-// const routes = [...messagesRoute, ...usersRoute, ...drawingsRoute]
-// routes.forEach(({ method, route, handler }) => {
-//   app[method](route, handler);
-// })
 
 
 app.get('/rank',((req,res)=>{

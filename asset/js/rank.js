@@ -1,20 +1,25 @@
 const lankBox = document.querySelector('.lanking ul');
 
-const renderRank = async()=>{
-    let uri = 'https://tetris-server-app-2.herokuapp.com/rank';
+const renderRank = async()=> {
+    const getRank = async () => {
+        try {
+            const res = await fetch('http://localhost:3000/rank');
+            return res.json();
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
-    const response = await fetch(uri);
-    const ranks = await response.json();
-
-    const rankInfo = ranks.sort((a,b)=>{
-        return b.score - a.score 
+    const rankObj = await getRank();
+    const rankInfo = rankObj.rank.sort((a,b)=>{
+    return b.score - a.score
     }).slice(0,3)
 
     let template = '';
     rankInfo.forEach((rank,i) => {
         template += `
         <li>
-            <i><img src="img/${i+1}.svg"/></i>
+            <i><img src="asset/img/${i+1}.svg"/></i>
             <div>
                 <span class="date">${rank.timestamp}</span>
                 <span class="nick">${rank.id}</span>
@@ -23,11 +28,17 @@ const renderRank = async()=>{
         </li>
         `
     });
-
     lankBox.innerHTML = template;
-
 }
 
-
-
 window.addEventListener('DOMContentLoaded',() => renderRank())
+
+
+
+
+
+
+
+
+
+

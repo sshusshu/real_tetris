@@ -1,29 +1,27 @@
-const fs = require('fs');
-const { resolve } = require('path');
-
-const basePath = resolve()
+import fs from 'fs';
+import { resolve } from 'path';
+const basePath = resolve();
 const filename = {
-    rank : resolve(basePath,'../db.json')
+    rank : resolve(basePath,'../server/db.json')
 }
 
-
-const getRank = () => {
+export const getRank = () => {
     try {
-        return JSON.parse(fs.readFileSync(filename[rank], 'utf-8'))
+        return JSON.parse(fs.readFileSync(filename.rank, 'utf-8'))
     } catch (err) {
         console.error(err)
     }
 }
 
-const setRank = (data) => {
+export const setRank = (data) => {
     try {
-        return fs.writeFileSync(filename[rank], JSON.stringify(data))
+        return fs.writeFileSync(filename.rank, JSON.stringify(data))
     } catch (err) {
         console.error(err)
     }
 }
 
-  const rankRoute = [
+export const rankRoute = [
     {
       // GET RANK
       method: 'get',
@@ -50,6 +48,4 @@ const setRank = (data) => {
       },
     },
   ]
-  
-
 

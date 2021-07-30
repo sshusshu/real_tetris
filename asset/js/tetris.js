@@ -9,8 +9,8 @@ let nowBlock;
 let nextBlock;
 let nowXY = [0, Math.floor(rowLen/2-1)];
 
-let nickNameData; 
-let scoreData; 
+let nickNameData;
+let scoreData;
 
 const getId = async(e)=>{
   e.preventDefault();
@@ -22,12 +22,26 @@ const getId = async(e)=>{
     timestamp:`${time.getFullYear()}.${time.getMonth()}.${time.getDate()}`
   }
 
-  await fetch('https://tetris-server-app-2.herokuapp.com/rank',{
+  // const setRank = async () =>{
+  //   const getRank = async () => {
+  //     try {
+  //       const res = await fetch('http://localhost:3000/rank');
+  //       return res.json();
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
+  //   }
+  //   const rankObj = await getRank();
+  //   rankObj.rank.push(lankData)
+  //   console.log(rankObj)
+  // }
+  // setRank()
+
+  await fetch('http://localhost:3000/rank',{
     method:'POST',
     body: JSON.stringify(lankData),
     headers:{'Content-Type':'application/json'}
   })
-  console.log(lankData)
 }
 
 InputId.addEventListener('submit',(e)=>getId(e))
@@ -260,9 +274,9 @@ function drawNext(){
   const next = document.getElementById('next-table');
   next.querySelectorAll('td').forEach(td=> td.className='')
 
-  nextBlock.shape[0].forEach((tr,i) => {   
+  nextBlock.shape[0].forEach((tr,i) => {
     tr.forEach((td,j)=>{
-       const tdName = next.children[0].children[i].children[j];  
+       const tdName = next.children[0].children[i].children[j];
         if(td) tdName.className = nextBlock.color;
     })
   });
@@ -270,7 +284,7 @@ function drawNext(){
 
 function generate(){
   //블록 생성
-  nowBlock = nowBlock? nextBlock 
+  nowBlock = nowBlock? nextBlock
   : blocks[Math.floor(Math.random()*blocks.length)];
   nextBlock = blocks[Math.floor(Math.random()*blocks.length)];
   drawNext();
@@ -316,7 +330,7 @@ function checkRow(){
       fullRows.push(i)
     }
   })
-  
+
   for(let i = 0; i<fullRows.length;i++){
     tetrisData.splice(fullRows[i],1);
     tetrisData.unshift(Array(rowLen).fill(0))
@@ -380,7 +394,7 @@ init();
 generate();
 
 
-// 이벤트 
+// 이벤트
 
 let tickTime = 1000;
 let tick = setInterval(goDown,tickTime)
@@ -392,7 +406,7 @@ let tickControl = setInterval(()=>{
 let isPaused = false;
 
 
-const addClassOn = target => {  
+const addClassOn = target => {
     target.classList.add('on')
 }
 
@@ -403,7 +417,7 @@ const removeClassOn = target =>{
 const startBtn = document.getElementById('start');
 const stopBtn = document.getElementById('stop')
 
-stopBtn.addEventListener('click',function(){  
+stopBtn.addEventListener('click',function(){
   removeClassOn(startBtn)
   addClassOn(this)
   isPaused=true;
@@ -440,7 +454,7 @@ window.addEventListener('keydown',(e)=>{
             }
           }
         }
-          
+
       if(canGoLeft){
         nowXY = nextXY;
         tetrisData.forEach((col,i)=>{
@@ -468,7 +482,7 @@ window.addEventListener('keydown',(e)=>{
             }
           }
         }
-          
+
       if(canGoRight){
         nowXY = nextXY;
         tetrisData.forEach((col,i)=>{
@@ -506,7 +520,7 @@ window.addEventListener('keyup',(e)=>{
             }
           }
         }
-          
+
       if(canCirculate){
         while(nowXY[0]<0){
           goDown();
@@ -530,7 +544,7 @@ window.addEventListener('keyup',(e)=>{
     case 'Space' :{
       while(goDown()){}
       break;
-    } 
+    }
   }
 })
 

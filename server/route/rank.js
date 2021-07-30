@@ -21,31 +21,4 @@ export const setRank = (data) => {
     }
 }
 
-export const rankRoute = [
-    {
-      // GET RANK
-      method: 'get',
-      route: '/rank',
-      handler: (req, res) => {
-        const ranks = getRank()
-        res.send(ranks)
-      },
-    },
-    {
-      // CREATE RANKS
-      method: 'post',
-      route: '/rank',
-      handler: ({ body }, res) => {
-        const ranks = getRank()
-        const newRank =   {
-            id: "wonny",
-            score: 200,
-            timestamp: "2021.6.24"
-          }
-        ranks.unshift(newRank)
-        setRank(ranks)
-        res.send(newRank)
-      },
-    },
-  ]
 

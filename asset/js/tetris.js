@@ -19,23 +19,8 @@ const getId = async(e)=>{
   const lankData = {
     id:nickNameData,
     score:scoreData,
-    timestamp:`${time.getFullYear()}.${time.getMonth()}.${time.getDate()}`
+    timestamp:`${time.getFullYear()}.${time.getMonth()+1}.${time.getDate()}`
   }
-
-  // const setRank = async () =>{
-  //   const getRank = async () => {
-  //     try {
-  //       const res = await fetch('http://localhost:3000/rank');
-  //       return res.json();
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   }
-  //   const rankObj = await getRank();
-  //   rankObj.rank.push(lankData)
-  //   console.log(rankObj)
-  // }
-  // setRank()
 
   await fetch('http://localhost:3000/rank',{
     method:'POST',

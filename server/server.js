@@ -1,21 +1,18 @@
 import express from 'express';
 import cors from 'cors';
-import {getRank,setRank,rankRoute} from './route/rank.js';
+import {getRank,setRank} from './route/rank.js';
 
 
-console.log(rankRoute)
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use(cors());
-// app.get('/',(req,res)=> res.send(
-//     'Hello World'
-// ));
+
 
 
 // const rankRoute = [
@@ -56,13 +53,14 @@ app.get('/rank',((req,res)=>{
     const ranks = getRank();
     res.send(ranks)
 }))
-app.post('/rank',(body,res)=>{
+app.post('/rank',(req,res)=>{
     const rankObj = getRank();
-    console.log(rankObj,body)
+    const body = req.body;
+    console.log(req.body)
     const newRank =  {
-        id: "wonny",
-        score: 200,
-        timestamp: "2021.6.24"
+        id: body.id,
+        score: body.score,
+        timestamp: body.timestamp
     }
     rankObj.rank.push(newRank)
     setRank(rankObj)

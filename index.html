@@ -1,107 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <title>Tetris</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1.0, user-scalable=yes">
-  <link rel="shortcut icon" type="image/x-icon" href="asset/img/favicon.ico">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tetris</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0,  maximum-scale=1.0, user-scalable=yes"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="asset/img/favicon.ico"
+    />
 
-  <!-- Share -->
-  <meta name="title" content="Tetris">
-  <meta name="description" content="">
-  <meta name="keywords" content="tetris,javascript tetris,테트리스,자바스크립트 테트리스,webgame,웹게임">
-  <link rel="image_src" href="asset/img/share.jpg">
+    <!-- Share -->
+    <meta name="title" content="Tetris" />
+    <meta name="description" content="" />
+    <meta
+      name="keywords"
+      content="tetris,javascript tetris,테트리스,자바스크립트 테트리스,webgame,웹게임"
+    />
+    <link rel="image_src" href="asset/img/share.jpg" />
 
-  <!-- Share for Facebook -->
-  <meta property="og:title" content="Tetris">
-  <meta property="og:description" content="">
-  <meta property="og:image" content="asset/img/share.jpg">
-  <meta property="og:type" content="website">
+    <!-- Share for Facebook -->
+    <meta property="og:title" content="Tetris" />
+    <meta property="og:description" content="" />
+    <meta property="og:image" content="asset/img/share.jpg" />
+    <meta property="og:type" content="website" />
 
-  <!-- Share for Twitter -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Tetris">
-  <meta name="twitter:description" content="">
-  <meta name="twitter:image" content="asset/img/share.jpg">
+    <!-- Share for Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Tetris" />
+    <meta name="twitter:description" content="" />
+    <meta name="twitter:image" content="asset/img/share.jpg" />
 
-  <!-- FONTS -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,600;0,900;1,900&display=swap" rel="stylesheet">
+    <!-- FONTS -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,600;0,900;1,900&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- CSS -->
-  <!-- <link rel="stylesheet" href="asset/scss_helper/helper.css"> -->
-  <link rel="stylesheet" href="asset/css/style.css">
-
-</head>
-<body>
-  <div class="tetris-wrap">
-    <aside class="lanking">
-      <ul>
-        <li>
-          <i><img src="asset/img/1.svg"/></i>
-          <div>
-            <span class="date">2021.07.10</span>
-            <span class="nick">SshuSshu</span>
-            <span class="score-line">score : <em class="score">240</em></span>
-          </div>
-        </li>
-        <li>
-          <i><img src="asset/img/2.svg"/></i>
-          <div>
-            <span class="date">2021.07.10</span>
-            <span class="nick">sakom33</span>
-            <span class="score-line">score : <em class="score">220</em></span>
-          </div>
-        </li>
-        <li>
-          <i><img src="asset/img/3.svg"/></i>
-          <div>
-            <span class="date">2021.07.10</span>
-            <span class="nick">Subin</span>
-            <span class="score-line">score : <em class="score">170</em></span>
-          </div>
-        </li>
-      </ul>
-    </aside>
-    <div class="tetris-box">
-      <h1 class="logo"><img src="asset/img/logo.svg"/></h1>
-      <table id="tetris">
-      </table>
-    </div>
-    <div class="right-box">
-      <table id="next-table">
-        <tr>
-            <td></td><td></td><td></td><td></td>
-        </tr>
-        <tr>
-            <td></td><td></td><td></td><td></td>
-        </tr>
-        <tr>
-            <td></td><td></td><td></td><td></td>
-        </tr>
-        <tr>
-            <td></td><td></td><td></td><td></td>
-        </tr>
-    </table>
-    <div class="util-box">
-      <div class="btn-box">
-        <button id="stop"><i><img src="asset/img/pause.svg"/></i></button>
-        <button id="start"><i><img src="asset/img/play.svg"/></i></button>
+    <!-- CSS -->
+    <!-- <link rel="stylesheet" href="asset/scss_helper/helper.css"> -->
+    <link rel="stylesheet" href="asset/css/style.css" />
+  </head>
+  <body>
+    <div class="tetris-wrap">
+      <aside class="lanking">
+        <ul>
+          <li>
+            <i><img src="asset/img/1.svg" /></i>
+            <div>
+              <span class="date">2021.07.10</span>
+              <span class="nick">SshuSshu</span>
+              <span class="score-line">score : <em class="score">240</em></span>
+            </div>
+          </li>
+          <li>
+            <i><img src="asset/img/2.svg" /></i>
+            <div>
+              <span class="date">2021.07.10</span>
+              <span class="nick">sakom33</span>
+              <span class="score-line">score : <em class="score">220</em></span>
+            </div>
+          </li>
+          <li>
+            <i><img src="asset/img/3.svg" /></i>
+            <div>
+              <span class="date">2021.07.10</span>
+              <span class="nick">Subin</span>
+              <span class="score-line">score : <em class="score">170</em></span>
+            </div>
+          </li>
+        </ul>
+      </aside>
+      <div class="tetris-box">
+        <h1 class="logo"><img src="asset/img/logo.svg" /></h1>
+        <table id="tetris"></table>
       </div>
-      <div class="score-box">score : <span id="score">0</span></div>
+      <div class="right-box">
+        <table id="next-table">
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+        <div class="util-box">
+          <div class="btn-box">
+            <button id="stop">
+              <i><img src="asset/img/pause.svg" /></i>
+            </button>
+            <button id="start">
+              <i><img src="asset/img/play.svg" /></i>
+            </button>
+          </div>
+          <div class="score-box">score : <span id="score">0</span></div>
+        </div>
+      </div>
     </div>
+    <div class="data-modal">
+      <div class="form">
+        <p>닉네임을 입력하세요!</p>
+        <form>
+          <input type="text" maxlength="10" />
+        </form>
+      </div>
     </div>
-
-  </div>
-  <div class="data-modal">
-    <div class="form">
-      <p>닉네임을 입력하세요!</p>
-      <form>
-        <input type="text" maxlength="10">
-      </form>
-    </div>
-  </div>
-  <script src="asset/js/tetris.js"></script>
-  <script src="asset/js/rank.js"></script>
-</body>
+    <script src="asset/js/tetris.js"></script>
+    <script src="asset/js/rank.js"></script>
+  </body>
 </html>

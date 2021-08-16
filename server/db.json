@@ -1,1 +1,8 @@
-{"rank":[{"id":"sshusshu","score":200,"timestamp":"2021.6.20"},{"id":"subin","score":190,"timestamp":"2021.6.23"},{"id":"bini9033","score":240,"timestamp":"2021.7.18"},{"id":"슈슈","score":200,"timestamp":"2021.6.30"}]}
+{
+  "rank": [
+    { "id": "sshusshu", "score": 200, "timestamp": "2021.6.20" },
+    { "id": "subin", "score": 190, "timestamp": "2021.6.23" },
+    { "id": "bini9033", "score": 240, "timestamp": "2021.7.18" },
+    { "id": "슈슈", "score": 200, "timestamp": "2021.6.30" }
+  ]
+}

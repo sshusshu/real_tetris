@@ -1,3 +1,4 @@
+
 # Tetris Game
 
 ### 바닐라 자바스크립트로 만든 테트리스
@@ -45,6 +46,7 @@ _Keyword : Vanilla JS(ES6) / Express / Heroku_
 4. 블럭 한 번에 하강 : goDown 함수를 연속 호출
 5. 랭킹 등록 : 게임오버 시 닉네임과 점수, 날짜 등을 JSON 데이터로 저장
 6. 랭킹 출력 : 서버에서 받아온 데이터에서 점수 기준으로 3등까지만 정렬하여 화면에 나타냄
+<img width="80%" src="https://user-images.githubusercontent.com/66768245/129699510-05f3adfc-434e-4e69-a964-fad2f4ff0743.gif">
 
 ### ✔️ 이벤트 조작 방법:
 

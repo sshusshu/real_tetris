@@ -16,6 +16,8 @@ _Keyword : Vanilla JS(ES6) / Express / Heroku_
 >
 > 속도 조절 & 랭킹 추가 구현
 
+ 👉 👉 [ 바로가기](https://sshusshu.github.io/real_tetris/)
+
 ---
 
 <img width="80%" src="https://user-images.githubusercontent.com/66768245/126979173-4a0121d3-48c3-4d31-848f-83defd8f3464.gif">
